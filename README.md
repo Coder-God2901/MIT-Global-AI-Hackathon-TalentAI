@@ -68,7 +68,7 @@ venv\Scripts\activate         # For Windows
 
 pip install -r requirements.txt
 ```
-# 🚀 Running the Application
+## 🚀 Running the Application
 ### 1. Start the Python Backend
 In a terminal inside the hour4_skill_validation directory, run:
 ```
@@ -81,7 +81,7 @@ npm run dev
 ```
 Access the app at: http://localhost:3000
 
-# 🔮 Future Plans
+## 🔮 Future Plans
 - **Advanced AI Matching:** Integrate machine learning models that intelligently match candidates to jobs based on deep skill analysis and assessment performance.
 
 - **Skill Verification Automation:** Automate more rigorous coding and soft skill assessments with interactive challenges.
@@ -95,8 +95,8 @@ Access the app at: http://localhost:3000
 - **Integration with Job Boards:** Sync job postings from major job portals for a broader opportunity pool.
 
 
-# 🤝 Contributing
+## 🤝 Contributing
 We welcome contributions! Feel free to fork the repository, create a new branch, and submit a pull request.
 
-# 📬 Contact
+## 📬 Contact
 For any questions, please reach out at akjain2904@gmail.com
