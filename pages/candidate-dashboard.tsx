@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import { CandidateDashboard } from "../components/CandidateDashboard";
+import CandidateDashboard from "../components/CandidateDashboard";
 
 const CandidateDashboardPage: React.FC = () => {
   return (
@@ -9,7 +9,7 @@ const CandidateDashboardPage: React.FC = () => {
         <title>Candidate Dashboard - TalentAI</title>
         <meta name="description" content="Manage your AI talent profile and opportunities" />
       </Head>
-      <CandidateDashboard />
+      <CandidateDashboard onNavigate={() => {}} />
     </>
   );
 };

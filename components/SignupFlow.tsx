@@ -27,6 +27,7 @@ import {
   AlertCircle,
   Sparkles
 } from 'lucide-react';
+import { useRouter } from 'next/router';
 
 interface SignupFlowProps {
   onSignup: (userType: 'candidate' | 'recruiter', userData: { email: string; name: string }) => void;
@@ -49,6 +50,7 @@ const recruiterBenefits = [
 ];
 
 export default function SignupFlow({ onSignup, onNavigate }: SignupFlowProps) {
+  const router = useRouter();
   const [currentStep, setCurrentStep] = useState<Step>('user-type');
   const [userType, setUserType] = useState<UserType>(null);
   const [showPassword, setShowPassword] = useState(false);
@@ -151,6 +153,13 @@ export default function SignupFlow({ onSignup, onNavigate }: SignupFlowProps) {
       });
 
       await onSignup(userType, sanitizedData);
+
+      // Redirect to dashboard after signup
+      if (userType === "candidate") {
+        router.push("/candidate-dashboard");
+      } else {
+        router.push("/recruiter-dashboard");
+      }
     } catch (error) {
       console.error('Signup error:', error);
       setErrors({ general: 'Failed to create account. Please try again.' });

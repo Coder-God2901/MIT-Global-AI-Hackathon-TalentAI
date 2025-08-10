@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import { JobSearchPage } from "../components/JobSearchPage";
+import JobSearchPage from "../components/JobSearchPage";
 
 const JobsPage: React.FC = () => {
   return (
@@ -9,7 +9,7 @@ const JobsPage: React.FC = () => {
         <title>AI Jobs - TalentAI</title>
         <meta name="description" content="Discover AI job opportunities matched to your skills" />
       </Head>
-      <JobSearchPage />
+      <JobSearchPage onNavigate={() => {}} />
     </>
   );
 };
