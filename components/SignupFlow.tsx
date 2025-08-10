@@ -7,7 +7,7 @@ import { Badge } from './ui/badge';
 import { Progress } from './ui/progress';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { Checkbox } from './ui/checkbox';
-import { validateEmail, validateName, sanitizeUserData } from '../utils/validation';
+import { validateEmail, validateName } from '../utils/validation';
 import { 
   Brain, 
   User, 
@@ -30,8 +30,18 @@ import {
 import { useRouter } from 'next/router';
 
 interface SignupFlowProps {
-  onSignup: (userType: 'candidate' | 'recruiter', userData: { email: string; name: string }) => void;
-  onNavigate: (view: string) => void;
+  onSignup: (userType: 'candidate' | 'recruiter', userData: { 
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string; 
+    region: string;
+    roleType: string;
+    company: string;
+    experience: string;
+    skills: string[];
+    agreeTerms: boolean;
+  }) => Promise<void>;
 }
 
 type Step = 'user-type' | 'basic-info' | 'role-details' | 'onboarding';
@@ -49,7 +59,7 @@ const recruiterBenefits = [
   { icon: Zap, title: 'Faster Hiring Process', description: 'Reduce time-to-hire by 60%' }
 ];
 
-export default function SignupFlow({ onSignup, onNavigate }: SignupFlowProps) {
+export default function SignupFlow({ onSignup }: SignupFlowProps) {
   const router = useRouter();
   const [currentStep, setCurrentStep] = useState<Step>('user-type');
   const [userType, setUserType] = useState<UserType>(null);
@@ -129,9 +139,8 @@ export default function SignupFlow({ onSignup, onNavigate }: SignupFlowProps) {
   };
 
   const handleSignup = async () => {
-    if (isSubmitting) return; // Prevent multiple submissions
+    if (isSubmitting) return; 
     
-    // Validate all required fields
     if (!userType) {
       setErrors({ general: 'Please select user type' });
       return;
@@ -144,22 +153,12 @@ export default function SignupFlow({ onSignup, onNavigate }: SignupFlowProps) {
 
     try {
       setIsSubmitting(true);
-      setErrors({}); // Clear any previous errors
+      setErrors({}); 
       
-      // Sanitize user input
-      const sanitizedData = sanitizeUserData({
-        email: formData.email,
-        name: `${formData.firstName} ${formData.lastName}`
-      });
-
-      await onSignup(userType, sanitizedData);
-
-      // Redirect to dashboard after signup
-      if (userType === "candidate") {
-        router.push("/candidate-dashboard");
-      } else {
-        router.push("/recruiter-dashboard");
-      }
+      // This is the correct way to pass the data to the parent component
+      await onSignup(userType!, formData);
+      
+      // The parent component handles the redirect, so we don't need it here.
     } catch (error) {
       console.error('Signup error:', error);
       setErrors({ general: 'Failed to create account. Please try again.' });
@@ -170,7 +169,6 @@ export default function SignupFlow({ onSignup, onNavigate }: SignupFlowProps) {
 
   const updateFormData = (field: string, value: any) => {
     setFormData(prev => ({ ...prev, [field]: value }));
-    // Clear error when user starts typing
     if (errors[field]) {
       setErrors(prev => ({ ...prev, [field]: '' }));
     }
@@ -182,7 +180,7 @@ export default function SignupFlow({ onSignup, onNavigate }: SignupFlowProps) {
         {/* Header */}
         <div className="text-center mb-8">
           <button 
-            onClick={() => onNavigate('landing')}
+            onClick={() => router.push('/')}
             className="inline-flex items-center space-x-2 text-primary hover:text-primary/80 transition-colors mb-4"
           >
             <ArrowLeft className="h-4 w-4" />
@@ -442,7 +440,6 @@ export default function SignupFlow({ onSignup, onNavigate }: SignupFlowProps) {
                       <SelectItem value="north-america">North America</SelectItem>
                       <SelectItem value="europe">Europe</SelectItem>
                       <SelectItem value="asia-pacific">Asia Pacific</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
                     </SelectContent>
                   </Select>
                   {errors.region && (
