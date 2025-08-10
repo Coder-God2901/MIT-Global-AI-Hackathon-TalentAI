@@ -16,13 +16,18 @@ const Profile: React.FC = () => {
     router.push('/upload-resume');
   };
 
+  // New handler for navigating to the skill challenge page
+  const handleNavigateToChallenge = () => {
+    router.push('/skill-challenge');
+  };
+
   return (
     <>
       <Head>
         <title>Profile - TalentAI</title>
         <meta name="description" content="Manage your TalentAI profile and preferences" />
       </Head>
-      <ProfilePage onNavigate={handleNavigate} onNavigateToUploader={handleNavigateToUploader} />
+      <ProfilePage onNavigate={handleNavigate} onNavigateToUploader={handleNavigateToUploader} onNavigateToChallenge={handleNavigateToChallenge} />
     </>
   );
 };

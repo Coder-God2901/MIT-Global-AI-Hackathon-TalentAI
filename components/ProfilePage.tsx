@@ -29,7 +29,15 @@ import {
   Eye,
   MessageSquare
 } from 'lucide-react';
-import type { ComponentProps } from '../types';
+import { useRouter } from 'next/router';
+
+// This is the correct interface for the ProfilePage component
+interface ProfilePageProps {
+  onNavigate: (route: string) => void;
+  onNavigateToUploader: () => void;
+  onNavigateToChallenge: () => void;
+  user?: any; // Assuming user is passed down as a prop
+}
 
 const skills = [
   { name: 'Machine Learning', level: 95, category: 'AI/ML' },
@@ -125,16 +133,17 @@ const endorsements = [
   }
 ];
 
-export default function ProfilePage({ onNavigate, user }: ComponentProps) {
+export default function ProfilePage({ onNavigate, user, onNavigateToUploader, onNavigateToChallenge }: ProfilePageProps) {
   const [activeTab, setActiveTab] = useState('overview');
 
   return (
     <div className="min-h-screen bg-talentai-background">
       {/* Navigation Header */}
+      {/* Assuming NavigationHeader is in a separate file and expects these props */}
       <NavigationHeader
         currentView="profile"
         userType={user?.type}
-        onNavigate={onNavigate!}
+        onNavigate={onNavigate}
         title="My Profile"
         subtitle="Manage your professional profile and showcase your skills"
       />
@@ -203,7 +212,7 @@ export default function ProfilePage({ onNavigate, user }: ComponentProps) {
                     <Edit className="h-4 w-4 mr-2" />
                     Edit
                   </Button>
-                  <Button variant="outline" size="sm">
+                  <Button variant="outline" size="sm" onClick={onNavigateToUploader}>
                     <Download className="h-4 w-4 mr-2" />
                     Resume
                   </Button>
@@ -401,7 +410,10 @@ export default function ProfilePage({ onNavigate, user }: ComponentProps) {
                     <p className="text-sm text-muted-foreground mb-4">
                       Complete skill assessments to showcase your expertise to employers
                     </p>
-                    <Button className="bg-primary hover:bg-primary/90">
+                    <Button 
+                      className="bg-primary hover:bg-primary/90"
+                      onClick={onNavigateToChallenge}
+                    >
                       Take Assessment
                     </Button>
                   </div>

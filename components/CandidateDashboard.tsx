@@ -1,3 +1,4 @@
+// components/CandidateDashboard.tsx
 import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
@@ -35,7 +36,7 @@ import {
 } from 'lucide-react';
 
 interface CandidateDashboardProps {
-  onNavigate: (view: string) => void;
+  onNavigate: (route: string) => void;
 }
 
 // Mock data for recommended jobs
@@ -151,7 +152,7 @@ export default function CandidateDashboard({ onNavigate }: CandidateDashboardPro
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <button 
-              onClick={() => onNavigate('landing')}
+              onClick={() => onNavigate('/')}
               className="flex items-center space-x-2"
             >
               <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
@@ -163,19 +164,19 @@ export default function CandidateDashboard({ onNavigate }: CandidateDashboardPro
             {/* Navigation */}
             <nav className="hidden md:flex items-center space-x-6">
               <button 
-                onClick={() => onNavigate('job-search')}
+                onClick={() => onNavigate('/jobs')}
                 className="text-foreground hover:text-primary transition-colors"
               >
                 Browse Jobs
               </button>
               <button 
-                onClick={() => onNavigate('skill-challenge')}
+                onClick={() => onNavigate('/skill-challenge')}
                 className="text-foreground hover:text-primary transition-colors"
               >
                 Skill Challenges
               </button>
               <button 
-                onClick={() => onNavigate('interview-experience')}
+                onClick={() => onNavigate('/interview')}
                 className="text-foreground hover:text-primary transition-colors"
               >
                 Interviews
@@ -219,7 +220,7 @@ export default function CandidateDashboard({ onNavigate }: CandidateDashboardPro
               <Button 
                 variant="ghost" 
                 size="sm"
-                onClick={() => onNavigate('profile')}
+                onClick={() => onNavigate('/profile')}
               >
                 <Avatar className="h-6 w-6">
                   <AvatarImage src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" />
@@ -248,14 +249,14 @@ export default function CandidateDashboard({ onNavigate }: CandidateDashboardPro
             <div className="flex items-center space-x-3 mt-4 md:mt-0">
               <Button 
                 variant="outline"
-                onClick={() => onNavigate('profile')}
+                onClick={() => onNavigate('/profile')}
                 className="border-primary text-primary hover:bg-primary hover:text-white"
               >
                 <Eye className="h-4 w-4 mr-2" />
                 View Profile
               </Button>
               <Button 
-                onClick={() => onNavigate('job-search')}
+                onClick={() => onNavigate('/jobs')}
                 className="bg-primary hover:bg-primary/90 text-white"
               >
                 <Search className="h-4 w-4 mr-2" />
@@ -336,7 +337,7 @@ export default function CandidateDashboard({ onNavigate }: CandidateDashboardPro
                   <Button 
                     size="sm" 
                     className="w-full bg-primary hover:bg-primary/90"
-                    onClick={() => onNavigate('profile')}
+                    onClick={() => onNavigate('/profile')}
                   >
                     <Upload className="h-4 w-4 mr-2" />
                     Complete Profile
@@ -380,7 +381,7 @@ export default function CandidateDashboard({ onNavigate }: CandidateDashboardPro
                   variant="outline" 
                   size="sm" 
                   className="w-full mt-4"
-                  onClick={() => onNavigate('skill-challenge')}
+                  onClick={() => onNavigate('/skill-challenge')}
                 >
                   <Star className="h-4 w-4 mr-2" />
                   Take Assessment
@@ -430,7 +431,7 @@ export default function CandidateDashboard({ onNavigate }: CandidateDashboardPro
                   <Button 
                     variant="outline" 
                     size="sm"
-                    onClick={() => onNavigate('job-search')}
+                    onClick={() => onNavigate('/jobs')}
                   >
                     View All Jobs
                   </Button>
@@ -578,7 +579,7 @@ export default function CandidateDashboard({ onNavigate }: CandidateDashboardPro
                     variant="outline" 
                     size="sm" 
                     className="w-full mt-4"
-                    onClick={() => onNavigate('interview-experience')}
+                    onClick={() => onNavigate('/interview')}
                   >
                     <Calendar className="h-4 w-4 mr-2" />
                     View All Interviews
@@ -623,6 +624,7 @@ export default function CandidateDashboard({ onNavigate }: CandidateDashboardPro
                     variant="outline" 
                     size="sm" 
                     className="w-full mt-4"
+                    onClick={() => onNavigate('/applications')} // Assuming this page exists
                   >
                     View All Applications
                   </Button>
