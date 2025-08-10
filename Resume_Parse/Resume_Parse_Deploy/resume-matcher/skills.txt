@@ -1,0 +1,32 @@
+python
+java
+c++
+sql
+mysql
+postgresql
+aws
+azure
+docker
+kubernetes
+nlp
+computer vision
+pytorch
+tensorflow
+scikit-learn
+react
+node.js
+javascript
+html
+css
+excel
+power bi
+data analysis
+big data
+spark
+hadoop
+git
+ci/cd
+rest api
+linux
+bash
+gcp

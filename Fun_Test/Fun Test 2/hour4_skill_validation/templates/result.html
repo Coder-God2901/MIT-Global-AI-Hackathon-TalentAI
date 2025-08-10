@@ -1,0 +1,25 @@
+<!-- templates/result.html -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Results</title></head>
+<body>
+  <div class="container">
+    <h2>Results for {{ candidate.name }}</h2>
+    {% if coder %}
+      <h3>Coder Challenge</h3>
+      <p>Score: {{ coder.score }}%</p>
+      <p>Passed tests: {{ coder.passed_tests }}/{{ coder.total_tests }}</p>
+      <p>Runtime: {{ coder.runtime_seconds }} s</p>
+    {% else %}
+      <p>No coder result yet.</p>
+    {% endif %}
+
+    {% if pers %}
+      <h3>Personality</h3>
+      <p>Tags: {{ pers.tags }}</p>
+    {% endif %}
+
+    <a href="/">Back to home</a>
+  </div>
+</body>
+</html>

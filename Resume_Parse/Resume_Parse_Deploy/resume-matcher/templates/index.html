@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="row">
+    <div class="col-md-6">
+      <h4>Upload Resume (PDF)</h4>
+      <form method="post" enctype="multipart/form-data" action="{{ url_for('upload_resume') }}">
+        <div class="mb-3">
+          <input class="form-control" type="file" name="resume" accept=".pdf" required>
+        </div>
+        <button class="btn btn-success">Upload & Parse</button>
+      </form>
+      <hr>
+      <h4>Ingest Jobs</h4>
+      <form method="post" enctype="multipart/form-data" action="{{ url_for('ingest_jobs') }}">
+        <div class="mb-3">
+          <input class="form-control" type="file" name="jobfile" accept=".json">
+          <small class="form-text text-muted">Or leave blank to use sample_jobs.json</small>
+        </div>
+        <button class="btn btn-primary">Ingest Jobs</button>
+      </form>
+    </div>
+
+    <div class="col-md-6">
+      <h4>Candidates ({{ candidates|length }})</h4>
+      <ul class="list-group">
+        {% for c in candidates %}
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+              <strong>{{ c.name }}</strong><br>
+              <small>{{ c.email or '' }} {{ '—' if c.location else '' }} {{ c.location or '' }}</small>
+            </div>
+            <div>
+              <a class="btn btn-sm btn-outline-primary" href="{{ url_for('candidate_page', cand_id=c.id) }}">View</a>
+            </div>
+          </li>
+        {% else %}
+          <li class="list-group-item">No candidates yet.</li>
+        {% endfor %}
+      </ul>
+      <hr>
+      <p>Jobs in DB: <strong>{{ jobs_count }}</strong></p>
+    </div>
+  </div>
+{% endblock %}

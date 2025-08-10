@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Challenge</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        window.TIME_LIMIT = {{ time_limit }};
+        window.CANDIDATE_ID = "{{ candidate_id }}";
+    </script>
+    <script src="{{ url_for('static', filename='timer.js') }}" defer></script>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+    <div class="header-left">
+        <a href="/dashboard" class="back-btn">← Back</a>
+        <h1><span class="logo">TalentAI</span> | Skill Challenge</h1>
+    </div>
+    <a href="/dashboard" class="dashboard-btn">🏠 Dashboard</a>
+</header>
+
+<!-- Top Info -->
+<div class="challenge-info">
+    <div class="info-pill"><span>⏱</span> <span id="timer">00:00</span></div>
+    <div class="info-pill"><span>🏆</span> 0/100</div>
+</div>
+
+<!-- Challenge Title -->
+<section class="challenge-header">
+    <h2>{{ challenge_title }}</h2>
+    <div class="tags">
+        <span class="tag hard">Hard</span>
+        <span class="tag category">Dynamic Programming</span>
+    </div>
+    <div class="challenge-buttons">
+        <button class="start-btn">▶ Start Challenge</button>
+        <button class="reset-btn">↻ Reset</button>
+    </div>
+</section>
+
+<!-- Tabs -->
+<div class="tabs">
+    <button class="tab active">Problem</button>
+    <button class="tab">Examples</button>
+    <button class="tab">Tests</button>
+</div>
+
+<!-- Problem Section -->
+<section class="card">
+    <h3>Description</h3>
+    <p>{{ description }}</p>
+
+    <h4>Constraints</h4>
+    <ul>
+        {% for constraint in constraints %}
+        <li>{{ constraint }}</li>
+        {% endfor %}
+    </ul>
+</section>
+
+<!-- Code Editor -->
+<section class="card">
+    <h3>💻 Code Editor</h3>
+    <p>Write your solution in Python</p>
+    <textarea id="code" rows="15">{{ starter_code }}</textarea>
+</section>
+
+<!-- Output -->
+<section class="card">
+    <h3>📄 Output</h3>
+    <pre id="output">Run your code to see output...</pre>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,5 @@
+Flask==2.3.3
+SQLAlchemy==2.0.19
+flask_sqlalchemy==3.0.3
+werkzeug==2.3.7
+pytest==7.4.0

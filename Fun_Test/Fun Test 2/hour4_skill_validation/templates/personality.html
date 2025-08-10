@@ -1,0 +1,21 @@
+<!-- templates/personality.html -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Personality Quiz</title></head>
+<body>
+  <div class="container">
+    <h2>Personality / Culture-fit Quiz</h2>
+    <form method="POST">
+      {% for q, name in questions %}
+        <div>
+          <p>{{ q }}</p>
+          <label><input type="radio" name="{{ name }}" value="agree" required> Agree</label>
+          <label><input type="radio" name="{{ name }}" value="neutral"> Neutral</label>
+          <label><input type="radio" name="{{ name }}" value="disagree"> Disagree</label>
+        </div>
+      {% endfor %}
+      <button type="submit">Submit Quiz</button>
+    </form>
+  </div>
+</body>
+</html>

@@ -5,6 +5,7 @@ import { Badge } from './ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { Progress } from './ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
+import ResumeUploader from '../components/ResumeUploader';
 import { NavigationHeader } from './NavigationHeader';
 import { 
   User, 

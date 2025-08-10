@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Data Scientist",
+    "location": "Bengaluru, India",
+    "requirements": "python, pandas, numpy, scikit-learn, machine learning, aws, sql"
+  },
+  {
+    "title": "Backend Engineer",
+    "location": "Hyderabad, India",
+    "requirements": "java, spring, rest api, sql, docker, kubernetes"
+  },
+  {
+    "title": "Frontend Engineer",
+    "location": "Remote",
+    "requirements": "react, javascript, html, css, node.js"
+  }
+]

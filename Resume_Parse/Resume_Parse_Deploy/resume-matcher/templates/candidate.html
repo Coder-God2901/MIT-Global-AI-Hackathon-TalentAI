@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+  <a class="btn btn-link mb-2" href="{{ url_for('index') }}">&larr; Back</a>
+  <h3>{{ cand.name }} <small class="text-muted">(#{{ cand.id }})</small></h3>
+  <p><strong>Email:</strong> {{ cand.email or 'N/A' }} &nbsp; <strong>Location:</strong> {{ cand.location or 'N/A' }}</p>
+
+  <h5>Skills</h5>
+  {% if skills %}
+    <ul>
+      {% for s in skills %}
+        <li>{{ s }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p><em>No skills found.</em></p>
+  {% endif %}
+
+  <h5>Top Matches</h5>
+  {% if matches %}
+    <table class="table table-sm">
+      <thead>
+        <tr><th>Score</th><th>Title</th><th>Location</th><th>Requirements</th></tr>
+      </thead>
+      <tbody>
+        {% for m in matches %}
+          <tr>
+            <td>{{ "%.3f"|format(m.score) }}</td>
+            <td>{{ m.title }}</td>
+            <td>{{ m.location or '' }}</td>
+            <td style="max-width: 40ch; overflow: hidden; text-overflow: ellipsis;">{{ m.requirements }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <a class="btn btn-outline-secondary" href="{{ url_for('export_matches_csv', cand_id=cand.id) }}">Download CSV</a>
+  {% else %}
+    <p><em>No matches found. Make sure jobs are ingested.</em></p>
+  {% endif %}
+{% endblock %}

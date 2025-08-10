@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import { InterviewExperience } from "../components/InterviewExperience";
+import InterviewExperience from "../components/InterviewExperience";
 
 const InterviewPage: React.FC = () => {
   return (
