@@ -5,13 +5,22 @@ import { AppProvider, useApp } from "../context/AppContext";
 import { ErrorNotification } from "../components/ErrorNotification";
 import { LoadingOverlay } from "../components/LoadingSpinner";
 import "../styles/globals.css";
+import { Inter } from "next/font/google";
 
-// App content component that uses the context
-const AppContent: React.FC<{ Component: any; pageProps: any }> = ({ Component, pageProps }) => {
+// Load Inter font via Next.js font system
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+});
+
+const AppContent: React.FC<{ Component: any; pageProps: any }> = ({
+  Component,
+  pageProps,
+}) => {
   const { state, clearError } = useApp();
 
   return (
-    <div className="min-h-screen bg-talentai-background">
+    <div className={`min-h-screen bg-talentai-background ${inter.className}`}>
       <Component {...pageProps} />
 
       {/* Global loading overlay */}
@@ -28,11 +37,10 @@ const AppContent: React.FC<{ Component: any; pageProps: any }> = ({ Component, p
   );
 };
 
-// Main Next.js App component
 const TalentAIApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   const handleGlobalError = (error: any) => {
     console.error("[TalentAI] Unhandled error:", error);
-    // In production, send to error tracking service
+    // send to monitoring in production if needed
   };
 
   return (
