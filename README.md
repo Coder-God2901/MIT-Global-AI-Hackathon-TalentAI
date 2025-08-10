@@ -1,4 +1,10 @@
 # 🚀 TalentAI
+![Build Status: MVP Ready](https://img.shields.io/badge/build-MVP%20Ready-brightgreen)
+![Next.js](https://img.shields.io/badge/Next.js-black?logo=next.js&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?logo=tailwind-css&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-000000?logo=flask&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?logo=supabase&logoColor=white)
 
 A modern, AI-powered talent marketplace designed to connect top AI/ML professionals with innovative companies. The platform streamlines hiring with intelligent matching, skill verification, and a seamless user experience for both candidates and recruiters.
 
@@ -74,6 +80,20 @@ In another terminal at the project root (TalentAI), run:
 npm run dev
 ```
 Access the app at: http://localhost:3000
+
+# 🔮 Future Plans
+- **Advanced AI Matching:** Integrate machine learning models that intelligently match candidates to jobs based on deep skill analysis and assessment performance.
+
+- **Skill Verification Automation:** Automate more rigorous coding and soft skill assessments with interactive challenges.
+
+- **Recruiter Analytics:** Dashboard insights to help recruiters analyze hiring trends and candidate quality.
+
+- **Community Features:** Enable networking and mentorship between AI/ML professionals on the platform.
+
+- **Mobile App:** A dedicated mobile app for easier access and push notifications.
+
+- **Integration with Job Boards:** Sync job postings from major job portals for a broader opportunity pool.
+
 
 # 🤝 Contributing
 We welcome contributions! Feel free to fork the repository, create a new branch, and submit a pull request.
